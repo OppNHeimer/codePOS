@@ -5,11 +5,15 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @ingredients = @item.ingredients.all
   end
 
   def new
     @item = Item.new
+  end
+
+  def add_ingredient
+    @item = Item.find(params[:id])
+    @ingredient = @item.ingredients.create!(:food)
   end
 
   def create

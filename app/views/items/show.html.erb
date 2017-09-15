@@ -2,7 +2,7 @@
 <%= link_to "edit", edit_item_path %>
 <p>QuickCode: <%= @item.code %></p>
 
-<h3>Ingredients:</h3>
+<h3>Ingredients <%= link_to '(+)', new_item_ingredient_path(@item) %></h3>
 <% @item.foods.each do |food| %>
   <li><%= food.name %></li>
 <% end %>
