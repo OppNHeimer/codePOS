@@ -9,9 +9,12 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
+    @item = Item.create!(item_params)
+    redirect_to @item
   end
 
   def exit
@@ -25,5 +28,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
+    params.require(:item).permit(:name, :code, :category)
   end
 end

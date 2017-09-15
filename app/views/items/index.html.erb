@@ -1,4 +1,4 @@
-<h2>menu</h2>
+<h2>menu <%= link_to '+', new_item_path %></h2>
 <% @items.each do |item| %>
   <%= link_to item.name, item %>
 <% end %>
