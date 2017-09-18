@@ -1,7 +1,8 @@
 <h2>All Ingredients</h2>
 
 <% @foods.each do |food| %>
-  <li> <%= food.name %> </li>
+  <li> <%= food.name %>: <%= food.code %></li>
+  <%= link_to 'edit', edit_food_path(food) %>
 <% end %>
 
 
