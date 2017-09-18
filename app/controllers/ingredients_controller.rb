@@ -1,11 +1,6 @@
 class IngredientsController < ApplicationController
 
-  def index
-  end
-
-  def show
-  end
-
+  # add ingredient to a menu item
   def create
     @item = Item.find(params[:item_id])
     @ingredient = @item.ingredients.create!(ingredient_params)
@@ -13,12 +8,7 @@ class IngredientsController < ApplicationController
     redirect_to @item
   end
 
-  def edit
-  end
-
-  def update
-  end
-
+  # remove an ingredient from a menu item
   def destroy
     @item = Item.find(params[:item_id])
     @ingredient = Ingredient.find_by(item_id: params[:item_id], food_id: params[:ingredient_id])

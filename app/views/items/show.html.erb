@@ -1,12 +1,21 @@
+<!-- menu item name -->
 <h2><%= @item.name %></h2>
+
+<!-- link to edit menu item -->
 <%= link_to "edit", edit_item_path %>
+
+<!-- 3 character code to identify menu item -->
 <p>QuickCode: <%= @item.code %></p>
 
-<h3>Ingredients <%= link_to '(+)', new_item_ingredient_path(@item) %></h3>
+<!-- list of ingredients -->
+<h3>Ingredients</h3>
 <% @item.foods.each do |food| %>
-  <li><%= food.name %><%= button_to "remove", item_ingredient_destroy_path(@item, food), method: :delete %></li>
+  <li><%= food.name %>
+  <!-- button to delete ingredient -->
+  <%= button_to "remove", item_ingredient_destroy_path(@item, food), method: :delete %></li>
 <% end %>
 
+<!-- form to add ingredient from list of foods -->
 <%= form_for [@item, @ingredient] do |f| %>
   <li><%= f.label 'add ingredient' %>
   <%= f.collection_select(:food_id, Food.all, :id, :name) %>

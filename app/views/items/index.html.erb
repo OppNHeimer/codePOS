@@ -1,4 +1,7 @@
+<!-- heading and button to add new item to menu -->
 <h2>menu <%= link_to '+', new_item_path %></h2>
+<!-- list of all menu items -->
 <% @items.each do |item| %>
+  <!-- link to menu item show pages -->
   <%= link_to item.name, item %>
 <% end %>

@@ -1,11 +1,15 @@
 class ItemsController < ApplicationController
+  # index of all menu items
   def index
     @items = Item.all
   end
 
+  # menu item show page
   def show
     @item = Item.find(params[:id])
     @ingredients = @item.ingredients.all
+
+    # used for ingredients#create
     @ingredient = @item.ingredients.new
   end
 
@@ -13,16 +17,19 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  # create new menu item
   def create
     @item = Item.create!(item_params)
 
     redirect_to @item
   end
 
+  # edit menu item
   def edit
     @item = Item.find(params[:id])
   end
 
+  # update menu item
   def update
     @item = Item.find(params[:id])
     @item.update!(item_params)
@@ -30,6 +37,7 @@ class ItemsController < ApplicationController
     redirect_to @item
   end
 
+  # delete menu item
   def destroy
     @item = Item.find(params[:id])
     @item.destroy

@@ -1,8 +1,0 @@
-<h2>Add ingredient to <%= @item.name %></h2>
-
-<%= form_for [@item, @ingredient] do |f| %>
-  <%= f.label 'new ingredient' %>
-  <%= f.collection_select(:food_id, Food.all, :id, :name) %>
-
-  <%= f.submit "create" %>
-<% end %>
