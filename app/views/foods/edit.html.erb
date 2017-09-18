@@ -9,3 +9,4 @@
 
   <%= f.submit "update" %></li>
 <% end %>
+<%= button_to "Delete", @food, method: :delete, data: {confirm: "Are you sure?"} %>
