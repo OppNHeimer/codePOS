@@ -4,10 +4,12 @@
 
 <h3>Ingredients <%= link_to '(+)', new_item_ingredient_path(@item) %></h3>
 <% @item.foods.each do |food| %>
-  <li>
-    <%= food.name %>
-    <#%= @ingredients.where(food_id: food.id) %>
-    <%= remove_ingredient_item_ingredient_path(@item, food) %>
-    <%= button_to "Delete", item_ingredient_destroy_path(@item, food), method: :delete %>
-  </li>
+  <li><%= food.name %><%= button_to "remove", item_ingredient_destroy_path(@item, food), method: :delete %></li>
+<% end %>
+
+<%= form_for [@item, @ingredient] do |f| %>
+  <li><%= f.label 'add ingredient' %>
+  <%= f.collection_select(:food_id, Food.all, :id, :name) %>
+
+  <%= f.submit "add" %></li>
 <% end %>
