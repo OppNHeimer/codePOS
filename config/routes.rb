@@ -1,7 +1,8 @@
 
 Rails.application.routes.draw do
   resources :items do
-    resources :ingredients, except: [:index, :show,] do
+    resources :ingredients, except: [:index, :show, :destroy] do
+        delete 'destroy'
       member do
         delete 'remove_ingredient'
       end

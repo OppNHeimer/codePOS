@@ -8,6 +8,6 @@
     <%= food.name %>
     <#%= @ingredients.where(food_id: food.id) %>
     <%= remove_ingredient_item_ingredient_path(@item, food) %>
-    <%= button_to "Delete", remove_ingredient_item_ingredient_path(@item, food), method: :delete %>
+    <%= button_to "Delete", item_ingredient_destroy_path(@item, food), method: :delete %>
   </li>
 <% end %>
