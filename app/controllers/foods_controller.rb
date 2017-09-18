@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
 
+  # index of all ingredients
   def index
     @foods = Food.all
     @food = Food.new
@@ -11,6 +12,7 @@ class FoodsController < ApplicationController
   def new
   end
 
+  # add ingredient to list
   def create
     @food = Food.new(food_params)
     @foods = Food.all
@@ -22,16 +24,12 @@ class FoodsController < ApplicationController
     render :index
   end
 
-
-
-  #   @food = Food.create!(food_params).valid?
-  #   redirect_to foods_path
-  # end
-
+  # edit ingredient
   def edit
     @food = Food.find(params[:id])
   end
 
+  # update ingredient
   def update
     @food = Food.find(params[:id])
     if @food.update(food_params)
@@ -42,6 +40,7 @@ class FoodsController < ApplicationController
     render :edit
   end
 
+  # delete ingredient
   def destroy
     @food = Food.find(params[:id])
     @food.destroy

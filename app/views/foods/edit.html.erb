@@ -1,9 +1,10 @@
+<!-- edit an ingredient -->
 <h2>edit <%= @food.name %></h2>
-
+<!-- error if form is filled out incorrectly -->
 <% @food.errors.full_messages.each do |message| %>
   <p><%= message %></p>
 <% end %>
-
+<!-- form to edit ingredient -->
 <%= form_for @food do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -13,4 +14,5 @@
 
   <%= f.submit "update" %></li>
 <% end %>
+<!-- button to delete ingredient -->
 <%= button_to "Delete", @food, method: :delete, data: {confirm: "Are you sure?"} %>
