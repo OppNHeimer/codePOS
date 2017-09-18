@@ -27,6 +27,7 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
+    @ingredient = 
   end
 
   private

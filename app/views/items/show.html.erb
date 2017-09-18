@@ -4,5 +4,9 @@
 
 <h3>Ingredients <%= link_to '(+)', new_item_ingredient_path(@item) %></h3>
 <% @item.foods.each do |food| %>
-  <li><%= food.name %></li>
+  <li>
+    <%= food.name %>
+    <%= @ingredients.where(food_id: food.id) %>
+    </li>
+    <%= button_to "Delete", @ingredients.where(food_id: food.id), method: :delete %>
 <% end %>
