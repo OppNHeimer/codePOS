@@ -6,7 +6,8 @@
 <% @item.foods.each do |food| %>
   <li>
     <%= food.name %>
-    <%= @ingredients.where(food_id: food.id) %>
-    </li>
-    <%= button_to "Delete", @ingredients.where(food_id: food.id), method: :delete %>
+    <#%= @ingredients.where(food_id: food.id) %>
+    <%= remove_ingredient_item_ingredient_path(@item, food) %>
+    <%= button_to "Delete", remove_ingredient_item_ingredient_path(@item, food), method: :delete %>
+  </li>
 <% end %>

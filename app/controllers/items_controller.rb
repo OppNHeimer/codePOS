@@ -38,6 +38,16 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def remove_ingredient
+    @item = Item.find(params[:item_id])
+    @ingredient = @item.ingredients.find(params[:id])
+    @item.ingredients.delete(@ingredient)
+
+    # @ingredient = Item.Ingredient.find_by(item_id: params[:item_id], food_id: food.id)
+    # @ingredient.destroy
+    redirect_to :back
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :code, :category)
