@@ -1,6 +1,8 @@
 class FoodsController < ApplicationController
 
   def index
+    @foods = Food.all
+    @food = Food.new
   end
 
   def show
@@ -10,6 +12,8 @@ class FoodsController < ApplicationController
   end
 
   def create
+    @food = Food.create!(food_params)
+    redirect_to foods_path
   end
 
   def edit
@@ -23,5 +27,6 @@ class FoodsController < ApplicationController
 
   private
   def food_params
+    params.require(:food).permit(:name, :code)
   end
 end

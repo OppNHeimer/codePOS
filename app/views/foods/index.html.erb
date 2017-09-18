@@ -1,1 +1,17 @@
-<h2>ingredients</h2>
+<h2>All Ingredients</h2>
+
+<% @foods.each do |food| %>
+  <li> <%= food.name %> </li>
+<% end %>
+
+
+<h4>Add Ingredient</h4>
+<%= form_for @food do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :code %>
+  <%= f.text_field :code %>
+
+  <%= f.submit "add", method: :post %></li>
+<% end %>
