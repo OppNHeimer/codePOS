@@ -1,5 +1,9 @@
 <!-- form to create new menu item -->
 <h2>new menu item </h2>
+<% @item.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 <%= form_for @item do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

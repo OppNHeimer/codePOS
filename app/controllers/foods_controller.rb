@@ -12,9 +12,21 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.create!(food_params)
-    redirect_to foods_path
+    @food = Food.new(food_params)
+    @foods = Food.all
+    if @food.save
+      flash[:notice] = 'Ingredient added!'
+      redirect_to foods_path
+      return
+    end
+    render :index
   end
+
+
+
+  #   @food = Food.create!(food_params).valid?
+  #   redirect_to foods_path
+  # end
 
   def edit
     @food = Food.find(params[:id])
@@ -22,9 +34,12 @@ class FoodsController < ApplicationController
 
   def update
     @food = Food.find(params[:id])
-    @food.update!(food_params)
-
-    redirect_to foods_path
+    if @food.update(food_params)
+      flash[:notice] = 'Ingredient updated'
+      redirect_to foods_path
+      return
+    end
+    render :edit
   end
 
   def destroy

@@ -1,4 +1,8 @@
-<h2>edit menu</h2>
+<h2>edit <%= @food.name %></h2>
+
+<% @food.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
 
 <%= form_for @food do |f| %>
   <%= f.label :name %>

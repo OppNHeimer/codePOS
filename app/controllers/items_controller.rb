@@ -19,9 +19,13 @@ class ItemsController < ApplicationController
 
   # create new menu item
   def create
-    @item = Item.create!(item_params)
-
-    redirect_to @item
+    @item = Item.new(item_params)
+    if @item.save
+      flash[:notice] = 'Menu item created!'
+      redirect_to @item
+      return
+    end
+    render :new
   end
 
   # edit menu item
@@ -32,9 +36,12 @@ class ItemsController < ApplicationController
   # update menu item
   def update
     @item = Item.find(params[:id])
-    @item.update!(item_params)
-
-    redirect_to @item
+    if @item.update(item_params)
+      flash[:notice] = 'Menu item updated'
+      redirect_to @item
+      return
+    end
+    render :edit
   end
 
   # delete menu item

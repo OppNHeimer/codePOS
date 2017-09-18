@@ -1,5 +1,10 @@
 <!-- form to edit menu item -->
 <h2>Edit <%= @item.name %></h2>
+
+<% @item.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 <%= form_for @item do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
