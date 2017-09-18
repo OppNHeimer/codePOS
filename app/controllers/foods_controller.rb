@@ -17,8 +17,7 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
     @foods = Food.all
     if @food.save
-      flash[:notice] = 'Ingredient added!'
-      redirect_to foods_path
+      redirect_to foods_path, notice: 'Ingredient added!'
       return
     end
     render :index
@@ -33,8 +32,7 @@ class FoodsController < ApplicationController
   def update
     @food = Food.find(params[:id])
     if @food.update(food_params)
-      flash[:notice] = 'Ingredient updated'
-      redirect_to foods_path
+      redirect_to foods_path, notice: 'Ingredient updated!'
       return
     end
     render :edit
@@ -45,7 +43,7 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
 
-    redirect_to foods_path
+    redirect_to foods_path, notice: 'Ingredient deleted.'
   end
 
   private

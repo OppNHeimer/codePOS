@@ -21,8 +21,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = 'Menu item created!'
-      redirect_to @item
+      redirect_to @item, notice: 'Menu item created!'
       return
     end
     render :new
@@ -37,8 +36,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = 'Menu item updated'
-      redirect_to @item
+      redirect_to @item, notice: 'Menu item updated!'
       return
     end
     render :edit
@@ -49,7 +47,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
 
-    redirect_to items_path
+    redirect_to items_path, notice: 'Menu item deleted.'
   end
 
   private
