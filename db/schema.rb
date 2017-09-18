@@ -10,43 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915153344) do
+ActiveRecord::Schema.define(version: 20170918214545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "foods", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "includes", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_includes_on_ingredient_id"
+    t.index ["item_id"], name: "index_includes_on_item_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.bigint "food_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_ingredients_on_food_id"
-    t.index ["item_id"], name: "index_ingredients_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "code"
-    t.string "category"
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
-  create_table "menu_items", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
-  add_foreign_key "ingredients", "foods"
-  add_foreign_key "ingredients", "items"
+
+  add_foreign_key "includes", "ingredients"
+  add_foreign_key "includes", "items"
+  add_foreign_key "items", "categories"
 end

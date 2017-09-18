@@ -1,4 +1,6 @@
 class Ingredient < ApplicationRecord
-	belongs_to :food
-	belongs_to :item
+	has_many :includes
+	has_many :items, through: :includes
+
+	validates :name, :code, presence: true, uniqueness: true
 end
