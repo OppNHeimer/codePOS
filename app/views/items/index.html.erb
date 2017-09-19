@@ -1,13 +1,33 @@
-<!-- heading and button to add new item to menu -->
+<!-- Category submenu-->
 <h2><%= @category.name %> <%= link_to '+', new_category_item_path %></h2>
 
 <section class='buttons'>
-<!-- list of all menu items -->
+<!-- list of all submenu items -->
   <% @items.each do |item| %>
-    <!-- link to menu item show pages -->
-    <a href='<%=category_item_path(@category, item)%>'>
-      <div class='menu_button'><span><%= item.name %></span><span><%= item.code %></span></div>
-    </a>
-
+    <div class='button_group'>
+      <!-- link to item show pages -->
+      <a href='<%=category_item_path(@category, item)%>'>
+        <div class='menu_button'><span><%= item.name %></span><span><%= item.code %></span></div>
+      </a>
+      <!-- link to edit item -->
+      <a href='<%= edit_category_item_path(@category, item) %>'>
+        <div class='edit_button'><span>edit</span></div>
+      </a>
+    </div>
   <% end %>
 </section>
+
+<h4>add menu item</h4>
+<% @item.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
+<%= form_for [@category, @item] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :code %>
+  <%= f.text_field :code %>
+
+  <%= f.submit "Create" %>
+<% end %>

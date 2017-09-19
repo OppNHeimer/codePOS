@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   def index
     @category = Category.find(params[:category_id])
     @items = @category.items.all
+    @item = @category.items.new
   end
 
   # menu item show page
