@@ -51,7 +51,7 @@ nav {
   align-items: center;
   border: 1px solid black;
   width: 100px;
-  height: 100px;
+  height: 75px;
   margin: 5px 5px 0 5px;
   text-align: center;
 }
@@ -95,4 +95,9 @@ h1 {
   display: flex;
   margin: 0 5px;
   font-size: 30px;
+}
+
+.order {
+  position: absolute;
+  bottom: 0px;
 }

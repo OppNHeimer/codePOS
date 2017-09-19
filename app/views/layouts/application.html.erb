@@ -14,13 +14,11 @@
       <a href='<%= categories_path %>'>
         <div class='nav_button'><span>Menu</span></div>
       </a>
-        <!-- <%= link_to 'home', categories_path %> -->
 
       <!-- link to manage foods -->
       <a href='<%= ingredients_path %>'>
         <div class='nav_button'><span>Ingredients</span></div>
       </a>
-      <!-- <%= link_to 'manage ingredients', ingredients_path %> -->
     </nav>
 
     <!-- display flash message -->
@@ -30,16 +28,18 @@
 
     <section id='yield'><%= yield %></section>
 
-    <h3>Order</h3>
-      <ol>
-        <% $order.each do |order| %>
-          <li><%= order[:item] %></li>
-          &emsp;<%= order[:modification] %>
-          <% if order[:message] %>
-            <br>&emsp; MESSAGE: <%= order[:message] %>
+    <section class='order'>
+      <h3>Order</h3>
+        <ol>
+          <% $order.each do |order| %>
+            <li><%= order[:item] %></li>
+            &emsp;<%= order[:modification] %>
+            <% if order[:message] %>
+              <br>&emsp; MESSAGE: <%= order[:message] %>
+            <% end %>
           <% end %>
-        <% end %>
-      </ol>
+        </ol>
+    </section>
 
   </body>
 </html>

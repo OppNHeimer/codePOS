@@ -6,9 +6,9 @@
   <h1><%= @item.name %></div></h1>
 </section>
 
-<!-- 3 character code to identify menu item -->
-<p>QuickCode: <%= @item.code %></p>
-
+<!-- button to add item to order -->
+<%= button_to 'add to order', category_item_add_to_order_path(@category, @item) %>
+<%#= link_to 'sdf' category_item_add_to_order_path %>
 <!-- list of ingredients -->
 <h3>Ingredients</h3>
 <% @item.ingredients.each do |ingredient| %>

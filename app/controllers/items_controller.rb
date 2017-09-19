@@ -58,6 +58,15 @@ class ItemsController < ApplicationController
     redirect_to category_items_path(@category), notice: 'Menu item deleted.'
   end
 
+  def add_to_order
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:item_id])
+    @order_item = @item.name
+    $order.push({:item => @order_item})
+
+    redirect_to category_item_path(@category, @item), notice: 'Menu item added to order'
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :code)
