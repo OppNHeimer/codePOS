@@ -18,12 +18,18 @@
   <% end %>
 </section>
 
+<section class='new'>
+  <h4>New category:</h4>
+  <!-- error if form filled out incorrectly -->
+  <% @category.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
 
-<h4>Create new category</h4>
-<!-- form to create new category -->
-<%= form_for @category do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <!-- form to create new category -->
+  <%= form_for @category do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.submit "Create" %>
-<% end %>
+    <%= f.submit "Create" %>
+  <% end %>
+</section>

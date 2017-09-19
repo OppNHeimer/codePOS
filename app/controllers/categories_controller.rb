@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 
 #   # create new menu item
   def create
+    @categories = Category.all
     @category = Category.new(category_params)
     if @category.save
       redirect_to category_items_path(@category), notice: 'Menu category created!'

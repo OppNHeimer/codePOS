@@ -16,20 +16,16 @@ class ItemsController < ApplicationController
     @include = @item.includes.new
   end
 
-  def new
-    @category = Category.find(params[:category_id])
-    @item = @category.items.new
-  end
-
   # create new menu item
   def create
     @category = Category.find(params[:category_id])
+    @items = @category.items.all
     @item = @category.items.new(item_params)
     if @item.save
-      redirect_to category_item_path(@category, @item), notice: 'Menu item created!'
+      redirect_to category_items_path(@category), notice: 'Menu item created!'
       return
     end
-    render :new
+    render :index
   end
 
   # edit menu item

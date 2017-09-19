@@ -2,7 +2,7 @@ class IngredientsController < ApplicationController
 
   # index of all ingredients
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.sort_by{ |k| k["name"] }
     @ingredient = Ingredient.new
   end
 
