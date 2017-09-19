@@ -1,4 +1,11 @@
-<h2>edit <%= @category.name %></h2>
+<section class='heading_section'>
+  <a href='<%= categories_path %>'>
+    <div class='back_button'><span> <= </span></div>
+  </a>
+  <h1>edit: <%= @category.name %></div></h1>
+</section>
+
+
 <!-- error if form is filled out incorrectly -->
 <% @category.errors.full_messages.each do |message| %>
   <p><%= message %></p>

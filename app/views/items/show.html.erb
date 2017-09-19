@@ -1,5 +1,10 @@
 <!-- menu item name -->
-<h2><%= @item.name %></h2>
+<section class='heading_section'>
+  <a href='<%= category_items_path(@category) %>'>
+    <div class='back_button'><span> <= </span></div>
+  </a>
+  <h1><%= @item.name %></div></h1>
+</section>
 
 <!-- 3 character code to identify menu item -->
 <p>QuickCode: <%= @item.code %></p>

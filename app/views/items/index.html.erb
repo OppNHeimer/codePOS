@@ -1,12 +1,17 @@
 <!-- Category submenu-->
-<h2><%= @category.name %></h2>
+<section class='heading_section'>
+  <a href='<%= categories_path %>'>
+    <div class='back_button'><span> <= </span></div>
+  </a>
+  <h1><%= @category.name %></div></h1>
+</section>
 
 <section class='buttons'>
 <!-- list of all submenu items -->
   <% @items.each do |item| %>
     <div class='button_group'>
       <!-- link to item show pages -->
-      <a href='<%=category_item_path(@category, item)%>'>
+      <a href='<%= category_item_path(@category, item) %>'>
         <div class='menu_button'><span><%= item.name %></span><span><%= item.code %></span></div>
       </a>
       <!-- link to edit item -->

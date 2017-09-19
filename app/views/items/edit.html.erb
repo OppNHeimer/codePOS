@@ -1,10 +1,17 @@
 <!-- form to edit menu item -->
-<h2>Edit <%= @item.name %></h2>
+<section class='heading_section'>
+  <a href='<%= category_items_path(@category) %>'>
+    <div class='back_button'><span> <= </span></div>
+  </a>
+  <h1>edit: <%= @item.name %></div></h1>
+</section>
 
+<!-- displays error if form is filled incorrectly -->
 <% @item.errors.full_messages.each do |message| %>
   <p><%= message %></p>
 <% end %>
 
+<!-- form to edit item -->
 <%= form_for [@category, @item] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

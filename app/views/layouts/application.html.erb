@@ -11,9 +11,16 @@
   <body>
     <nav>
       <!-- link to menu home -->
-      <%= link_to 'home', categories_path %>
+      <a href='<%= categories_path %>'>
+        <div class='nav_button'><span>Menu</span></div>
+      </a>
+        <!-- <%= link_to 'home', categories_path %> -->
+
       <!-- link to manage foods -->
-      <%= link_to 'manage ingredients', ingredients_path %>
+      <a href='<%= ingredients_path %>'>
+        <div class='nav_button'><span>Ingredients</span></div>
+      </a>
+      <!-- <%= link_to 'manage ingredients', ingredients_path %> -->
     </nav>
 
     <!-- display flash message -->

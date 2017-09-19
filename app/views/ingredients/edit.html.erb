@@ -1,5 +1,11 @@
 <!-- edit an ingredient -->
-<h2>edit <%= @ingredient.name %></h2>
+<section class='heading_section'>
+  <a href='<%= ingredients_path %>'>
+    <div class='back_button'><span> <= </span></div>
+  </a>
+  <h1>edit: <%= @ingredient.name %></div></h1>
+</section>
+
 <!-- error if form is filled out incorrectly -->
 <% @ingredient.errors.full_messages.each do |message| %>
   <p><%= message %></p>
