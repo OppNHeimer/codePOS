@@ -1,0 +1,7 @@
+<!-- heading and button to add new category to menu -->
+<h2>menu <%= link_to '+', new_category_path %></h2>
+<!-- list of all menu categories -->
+<% @categories.each do |category| %>
+  <!-- link to category show pages -->
+  <%= link_to category.name, category_items_path(category) %>
+<% end %>

@@ -2,23 +2,23 @@
 <h2><%= @item.name %></h2>
 
 <!-- link to edit menu item -->
-<%= link_to "edit", edit_item_path %>
+<%= link_to "edit", edit_category_item_path %>
 
 <!-- 3 character code to identify menu item -->
 <p>QuickCode: <%= @item.code %></p>
 
 <!-- list of ingredients -->
 <h3>Ingredients</h3>
-<% @item.foods.each do |food| %>
-  <li><%= food.name %>
+<% @item.ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %>
   <!-- button to delete ingredient -->
-  <%= button_to "remove", item_ingredient_destroy_path(@item, food), method: :delete %></li>
+  <%= button_to "remove", category_item_include_destroy_path(@category, @item, ingredient), method: :delete %></li>
 <% end %>
 
-<!-- form to add ingredient from list of foods -->
-<%= form_for [@item, @ingredient] do |f| %>
+form to add include from list of ingredients
+<%= form_for [@category, @item], category_item_includes_path(@include) do |f| %>
   <li><%= f.label 'add ingredient' %>
-  <%= f.collection_select(:food_id, Food.all, :id, :name) %>
+  <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
 
   <%= f.submit "add" %></li>
 <% end %>

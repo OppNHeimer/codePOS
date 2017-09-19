@@ -1,24 +1,53 @@
-class IngredientsController < ApplicationController
+class ingredientsController < ApplicationController
 
-  # add ingredient to a menu item
-  def create
-    @item = Item.find(params[:item_id])
-    @ingredient = @item.ingredients.create!(ingredient_params)
-
-    redirect_to @item
+  # index of all ingredients
+  def index
+    @ingredients = Ingredient.all
+    @ingredient = Ingredient.new
   end
 
-  # remove an ingredient from a menu item
+  def show
+  end
+
+  def new
+  end
+
+  # add ingredient to list
+  def create
+    @ingredient = Ingredient.new(ingredient_params)
+    @ingredients = Ingredient.all
+    if @ingredient.save
+      redirect_to ingredients_path, notice: 'Ingredient added!'
+      return
+    end
+    render :index
+  end
+
+  # edit ingredient
+  def edit
+    @ingredient = Ingredient.find(params[:id])
+  end
+
+  # update ingredient
+  def update
+    @ingredient = Ingredient.find(params[:id])
+    if @ingredient.update(ingredient_params)
+      redirect_to ingredients_path, notice: 'Ingredient updated!'
+      return
+    end
+    render :edit
+  end
+
+  # delete ingredient
   def destroy
-    @item = Item.find(params[:item_id])
-    @ingredient = Ingredient.find_by(item_id: params[:item_id], food_id: params[:ingredient_id])
+    @ingredient = Ingredient.find(params[:id])
     @ingredient.destroy
 
-    redirect_to @item
+    redirect_to ingredients_path, notice: 'Ingredient deleted.'
   end
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:food_id)
+    params.require(:ingredient).permit(:name, :code)
   end
 end

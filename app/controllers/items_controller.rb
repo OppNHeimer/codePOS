@@ -1,16 +1,18 @@
 class ItemsController < ApplicationController
   # index of all menu items
   def index
-    @items = Item.all
+    @category = Category.find(params[:category_id])
+    @items = @category.items.all
   end
 
   # menu item show page
   def show
-    @item = Item.find(params[:id])
-    @ingredients = @item.ingredients.all
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:id])
+    @includes = @item.ingredients.all
 
-    # used for ingredients#create
-    @ingredient = @item.ingredients.new
+    # used for includes#create
+    @include = @item.includes.new
   end
 
   def new
