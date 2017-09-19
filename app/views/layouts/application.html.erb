@@ -32,7 +32,7 @@
 
       <h3>Order</h3>
         <ol>
-          <% $orders.each do |order| %>
+          <% @orders.each do |order| %>
             <li><%= order.item %></li>
                 <ul>
                   <% order.modification.each do |mod| %>
