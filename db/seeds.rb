@@ -26,3 +26,5 @@ pepperoni_pizza.includes.create(ingredient: pizza_sauce)
 pepperoni_pizza.includes.create(ingredient: pepperoni)
 spaghetti_meatballs.includes.create(ingredient: marinara_sauce)
 spaghetti_meatballs.includes.create(ingredient: meatballs)
+
+Order.create(item: 'bus', modification: ['no peas', 'add bs'])

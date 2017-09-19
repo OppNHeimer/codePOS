@@ -14,6 +14,8 @@ class ItemsController < ApplicationController
 
     # used for includes#create
     @include = @item.includes.new
+    # used for orders#create
+    @order = Order.new
   end
 
   # create new menu item

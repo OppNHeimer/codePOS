@@ -29,14 +29,19 @@
     <section id='yield'><%= yield %></section>
 
     <section class='order'>
+
       <h3>Order</h3>
         <ol>
-          <% $order.each do |order| %>
-            <li><%= order[:item] %></li>
-            &emsp;<%= order[:modification] %>
-            <% if order[:message] %>
-              <br>&emsp; MESSAGE: <%= order[:message] %>
-            <% end %>
+          <% $orders.each do |order| %>
+            <li><%= order.item %></li>
+                <ul>
+                  <% order.modification.each do |mod| %>
+                    <li><%= mod.to_s %></li>
+                  <% end %>
+                  <% if order.message %>
+                    <li> REQUEST: <%= order.message %></li>
+                  <% end %>
+                </ul>
           <% end %>
         </ol>
     </section>
