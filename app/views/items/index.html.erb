@@ -1,7 +1,13 @@
 <!-- heading and button to add new item to menu -->
-<h2>menu <%= link_to '+', new_category_item_path %></h2>
+<h2><%= @category.name %> <%= link_to '+', new_category_item_path %></h2>
+
+<section class='buttons'>
 <!-- list of all menu items -->
-<% @items.each do |item| %>
-  <!-- link to menu item show pages -->
-  <%= link_to item.name, category_item_path(@category, item) %>
-<% end %>
+  <% @items.each do |item| %>
+    <!-- link to menu item show pages -->
+    <a href='<%=category_item_path(@category, item)%>'>
+      <div class='menu_button'><span><%= item.name %></span><span><%= item.code %></span></div>
+    </a>
+
+  <% end %>
+</section>

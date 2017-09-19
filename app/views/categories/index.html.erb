@@ -1,7 +1,25 @@
 <!-- heading and button to add new category to menu -->
-<h2>menu <%= link_to '+', new_category_path %></h2>
+<h2>menu</h2>
+
+<section class='buttons'>
 <!-- list of all menu categories -->
-<% @categories.each do |category| %>
-  <!-- link to category show pages -->
-  <%= link_to category.name, category_items_path(category) %>
+  <% @categories.each do |category| %>
+    <!-- link to category pages -->
+    <div class='button_group'>
+      <a href='<%=category_items_path(category)%>'>
+        <div class='menu_button'><span><%= category.name %></span></div>
+      </a>
+      <a href='<%= edit_category_path(category) %>'>
+        <div class='edit_button'><span>edit</span></div>
+      </a>
+    </div>
+  <% end %>
+</section>
+
+<h4>add menu category</h4>
+<%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Create" %>
 <% end %>

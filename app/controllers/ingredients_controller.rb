@@ -1,4 +1,4 @@
-class ingredientsController < ApplicationController
+class IngredientsController < ApplicationController
 
   # index of all ingredients
   def index

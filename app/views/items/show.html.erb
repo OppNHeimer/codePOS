@@ -15,8 +15,8 @@
   <%= button_to "remove", category_item_include_destroy_path(@category, @item, ingredient), method: :delete %></li>
 <% end %>
 
-form to add include from list of ingredients
-<%= form_for [@category, @item], category_item_includes_path(@include) do |f| %>
+<!-- form to add include from list of ingredients -->
+<%= form_for [@category, @item, @include] do |f| %>
   <li><%= f.label 'add ingredient' %>
   <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
 

@@ -1,18 +1,18 @@
 <h2>All Ingredients</h2>
 
 <!-- list of all ingredients available to the menu -->
-<% @foods.each do |food| %>
-  <li> <%= food.name %>: <%= food.code %></li>
-  <%= link_to 'edit', edit_food_path(food) %>
+<% @ingredients.each do |ingredient| %>
+  <li> <%= ingredient.name %>: <%= ingredient.code %></li>
+  <%= link_to 'edit', edit_ingredient_path(ingredient) %>
 <% end %>
 
 <h4>Add Ingredient</h4>
 <!-- error if form filled out incorrectly -->
-<% @food.errors.full_messages.each do |message| %>
+<% @ingredient.errors.full_messages.each do |message| %>
   <p><%= message %></p>
 <% end %>
 <!-- form to add a new ingredient -->
-<%= form_for @food do |f| %>
+<%= form_for @ingredient do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 

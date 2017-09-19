@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
+#yield {
+   display: flex;
+   flex-direction: column
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+.button_group {
+  display: flex;
+  flex-direction: column;
+}
+.menu_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 5px 5px 0 5px;
+  text-align: center;
+}
+.edit_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 100px;
+  height: 15px;
+  margin: 0 5px 5px 5px;
+}
+
+a {
+  text-decoration: none;
+}

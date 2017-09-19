@@ -16,14 +16,16 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @category = Category.find(params[:category_id])
+    @item = @category.items.new
   end
 
   # create new menu item
   def create
-    @item = Item.new(item_params)
+    @category = Category.find(params[:category_id])
+    @item = @category.items.new(item_params)
     if @item.save
-      redirect_to @item, notice: 'Menu item created!'
+      redirect_to category_item_path(@category, @item), notice: 'Menu item created!'
       return
     end
     render :new
@@ -31,14 +33,16 @@ class ItemsController < ApplicationController
 
   # edit menu item
   def edit
-    @item = Item.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:id])
   end
 
   # update menu item
   def update
+    @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to @item, notice: 'Menu item updated!'
+      redirect_to category_item_path(@category, @item), notice: 'Menu item updated!'
       return
     end
     render :edit
@@ -46,14 +50,19 @@ class ItemsController < ApplicationController
 
   # delete menu item
   def destroy
-    @item = Item.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:id])
+    @includes = @item.includes.all
+    @includes.each do |include|
+      include.destroy
+    end
     @item.destroy
 
-    redirect_to items_path, notice: 'Menu item deleted.'
+    redirect_to category_items_path(@category), notice: 'Menu item deleted.'
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :code, :category)
+    params.require(:item).permit(:name, :code)
   end
 end
