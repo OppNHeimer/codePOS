@@ -7,4 +7,11 @@ class OrdersController < ApplicationController
 
     redirect_to category_item_path(@category, @item), notice: 'Item added to order'
   end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+
+    redirect_to root_path
+  end
 end

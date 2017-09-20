@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     end
   end
   resources :ingredients
+  resources :orders, only: [:destroy]
   root 'categories#index'
 end
