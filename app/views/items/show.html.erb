@@ -6,9 +6,16 @@
   <h1><%= @item.name %></div></h1>
 </section>
 
-<!-- button to add item to order -->
+<!-- form to add item to order -->
+<%= form_for [@category, @item, @order] do |f| %>
+  <%#= f.label :item %>
+  <%#= f.text_field :item %>
 
-<%= button_to 'add to order', category_item_order_path(@category, @item) %>
+  <%= f.label 'special request' %>
+  <%= f.text_field :message %>
+
+  <%= f.submit 'add to order' %>
+<% end %>
 
 <!-- list of ingredients -->
 <h3>Ingredients</h3>

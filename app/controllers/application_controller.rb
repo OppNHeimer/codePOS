@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def get_orders
+    @modifications = ['blah','di','da']
     @orders = Order.all
   end
 

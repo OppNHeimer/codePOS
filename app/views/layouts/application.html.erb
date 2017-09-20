@@ -38,7 +38,7 @@
                   <% order.modification.each do |mod| %>
                     <li><%= mod.to_s %></li>
                   <% end %>
-                  <% if order.message %>
+                  <% if order.message != "" %>
                     <li> REQUEST: <%= order.message %></li>
                   <% end %>
                 </ul>
