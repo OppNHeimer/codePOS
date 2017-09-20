@@ -1,20 +1,27 @@
-<h1>All Ingredients</h1>
+<!-- ingredients heading -->
+<h1>Ingredients</h1>
 
 <section class='buttons'>
 <!-- list of all ingredients available to the menu -->
   <% @ingredients.each do |ingredient| %>
     <!-- button to edit ingredient -->
-    <a href='<%=edit_ingredient_path(ingredient)%>'>
-      <div class='menu_button'>EDIT<br><br><span><%= ingredient.name %></span><span><%= ingredient.code %></span></div>
-    </a>
+    <%= link_to edit_ingredient_path(ingredient), class: 'menu_button' do %>
+      EDIT
+      <br>
+      <br>
+      <%= ingredient.name %>
+      <br>
+      <%= ingredient.code %>
     <% end %>
+  <% end %>
 </section>
 
 
 
-<section class='new'>
+<section class='form'>
+  <!-- create new ingredient -->
   <h4>New ingredient:</h4>
-<!-- error if form filled out incorrectly -->
+  <!-- error if form filled out incorrectly -->
   <% @ingredient.errors.full_messages.each do |message| %>
     <p><%= message %></p>
   <% end %>

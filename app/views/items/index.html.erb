@@ -1,35 +1,35 @@
 <!-- Category submenu-->
 <section class='heading_section'>
-  <a href='<%= categories_path %>'>
-    <div class='back_button'><span> <= </span></div>
-  </a>
+  <!-- back button -->
+  <%= link_to '<=', categories_path, class: 'back_button' %>
+  <!-- submenu heading -->
   <h1><%= @category.name %></div></h1>
 </section>
 
 <section class='buttons'>
-<!-- list of all submenu items -->
+<!-- all submenu items -->
   <% @items.each do |item| %>
     <div class='button_group'>
       <!-- link to item show pages -->
-      <a href='<%= category_item_path(@category, item) %>'>
-        <div class='menu_button'><span><%= item.name %></span><span><%= item.code %></span></div>
-      </a>
+      <%= link_to category_item_path(@category, item), class: 'menu_button' do %>
+        <%= item.name %>
+        <%= item.code %>
+      <% end %>
+
       <!-- link to edit item -->
-      <a href='<%= edit_category_item_path(@category, item) %>'>
-        <div class='edit_button'><span>edit</span></div>
-      </a>
+      <%= link_to 'edit', edit_category_item_path(@category, item), class: 'edit_button' %>
     </div>
   <% end %>
 </section>
 
-<section class='new'>
-<h4>New menu item:</h4>
-<!-- display error if form is not filled correctly -->
-<% @item.errors.full_messages.each do |message| %>
-  <p><%= message %></p>
-<% end %>
+<section class='form'>
+  <h4>New menu item:</h4>
+  <!-- display error if form is not filled correctly -->
+  <% @item.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
 
-<!-- form to create new item -->
+  <!-- form to create new item -->
   <%= form_for [@category, @item] do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>

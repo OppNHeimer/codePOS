@@ -1,34 +1,43 @@
 <!-- menu item name -->
 <section class='heading_section'>
-  <a href='<%= category_items_path(@category) %>'>
-    <div class='back_button'><span> <= </span></div>
-  </a>
+  <!-- back button -->
+  <%= link_to '<=', category_items_path(@category), class: 'back_button' %>
+  <!-- item heading -->
   <h1><%= @item.name %></div></h1>
 </section>
 
 <!-- form to add item to order -->
 <%= form_for [@category, @item, @order] do |f| %>
-  <%#= f.label :item %>
-  <%#= f.text_field :item %>
-
   <%= f.label 'special request' %>
   <%= f.text_field :message %>
 
   <%= f.submit 'add to order' %>
 <% end %>
 
-<!-- list of ingredients -->
-<h3>Ingredients</h3>
-<% @item.ingredients.each do |ingredient| %>
-  <li><%= ingredient.name %>
-  <!-- button to delete ingredient -->
-  <%= button_to "remove", category_item_include_destroy_path(@category, @item, ingredient), method: :delete %></li>
-<% end %>
+<!-- item's includes subheading -->
+<h3><%= @item.name %> includes:</h3>
+<section class='buttons'>
+  <!-- list of includes -->
+  <% @item.ingredients.each do |ingredient| %>
+    <div class='button_group'>
 
-<!-- form to add include from list of ingredients -->
-<%= form_for [@category, @item, @include] do |f| %>
-  <li><%= f.label 'add ingredient' %>
-  <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+      <%= link_to root_path, class: "menu_button" do %>
+        <%= ingredient.name %>
+      <% end %>
+      <!-- button to delete ingredient -->
+      <%= link_to category_item_include_destroy_path(@category, @item, ingredient), class: "edit_button", method: :delete  do %>
+        remove
+      <% end %>
+    </div>
+  <% end %>
+</section>
 
-  <%= f.submit "add" %></li>
-<% end %>
+<section class='form'>
+  <!-- form to add include from list of ingredients -->
+  <%= form_for [@category, @item, @include] do |f| %>
+    <li><%= f.label 'add ingredient' %>
+    <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+
+    <%= f.submit "add" %></li>
+  <% end %>
+</section>

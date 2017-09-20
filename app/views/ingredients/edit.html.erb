@@ -1,24 +1,26 @@
 <!-- edit an ingredient -->
 <section class='heading_section'>
-  <a href='<%= ingredients_path %>'>
-    <div class='back_button'><span> <= </span></div>
-  </a>
+  <!-- back button -->
+  <%= link_to '<=', ingredients_path, class: 'back_button' %>
+  <!-- edit ingredient heading -->
   <h1>edit: <%= @ingredient.name %></div></h1>
 </section>
 
-<!-- error if form is filled out incorrectly -->
+<!-- shows error if form is filled out incorrectly -->
 <% @ingredient.errors.full_messages.each do |message| %>
   <p><%= message %></p>
 <% end %>
-<!-- form to edit ingredient -->
-<%= form_for @ingredient do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<section class='form'>
+  <!-- form to edit ingredient -->
+  <%= form_for @ingredient do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.label :code %>
-  <%= f.text_field :code %>
+    <%= f.label :code %>
+    <%= f.text_field :code %>
 
-  <%= f.submit "update" %></li>
-<% end %>
-<!-- button to delete ingredient -->
-<%= button_to "Delete", @ingredient, method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= f.submit "update" %></li>
+  <% end %>
+  <!-- button to delete ingredient -->
+  <%= button_to "Delete", @ingredient, method: :delete, data: {confirm: "Are you sure?"} %>
+</section>

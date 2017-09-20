@@ -1,8 +1,8 @@
 <!-- form to edit menu item -->
 <section class='heading_section'>
-  <a href='<%= category_items_path(@category) %>'>
-    <div class='back_button'><span> <= </span></div>
-  </a>
+  <!-- back_button -->
+  <%= link_to '<=', category_items_path(@category), class: 'back_button' %>
+  <!-- edit menu item heading -->
   <h1>edit: <%= @item.name %></div></h1>
 </section>
 
@@ -11,15 +11,17 @@
   <p><%= message %></p>
 <% end %>
 
-<!-- form to edit item -->
-<%= form_for [@category, @item] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<section class='form'>
+  <!-- form to edit item -->
+  <%= form_for [@category, @item] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.label :code %>
-  <%= f.text_field :code %>
+    <%= f.label :code %>
+    <%= f.text_field :code %>
 
-  <%= f.submit "Update" %>
-<% end %>
-<!-- button to delete menu item -->
-<%= button_to "Delete", [@category, @item], method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= f.submit "Update" %>
+  <% end %>
+  <!-- button to delete menu item -->
+  <%= button_to "Delete", [@category, @item], method: :delete, data: {confirm: "Are you sure?"} %>
+</section>

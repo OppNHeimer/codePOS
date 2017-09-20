@@ -9,12 +9,16 @@
 
       <!-- button to category submenu -->
       <a href='<%=category_items_path(category)%>'>
-        <div class='menu_button'><span><%= category.name %></span></div>
+        <div class='menu_button'>
+          <span><%= category.name %></span>
+        </div>
+      </a>
 
       <!-- button to edit category -->
-      </a>
       <a href='<%= edit_category_path(category) %>'>
-        <div class='edit_button'><span>edit</span></div>
+        <div class='edit_button'>
+          <span>edit</span>
+        </div>
       </a>
     </div>
   <% end %>
