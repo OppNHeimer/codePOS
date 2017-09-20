@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     @item = @category.items.find(params[:id])
     @includes = @item.ingredients.all
     @ingredients = Ingredient.all
+    
 
     # used for includes#create
     @include = @item.includes.new

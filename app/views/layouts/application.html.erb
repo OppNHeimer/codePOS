@@ -31,7 +31,7 @@
         <ol>
           <% @orders.each do |order| %>
             <!-- delete item from order -->
-            <li><%= link_to '(-)', order_path(order), method: :delete %><%= order.item %></li>
+            <li><%= link_to '(-)', order_path(order), method: :delete %> <%= order.item %></li>
                 <ul>
                   <% if order.modification %>
                     <% order.modification.each do |mod| %>

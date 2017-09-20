@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     position: absolute;
     height: 100vh;
-    padding: 0 50px;
+    padding: 0 50px 0 20px;
     /*margin: 0 20px;*/
     right: 0px;
     background-color: darkgrey;
@@ -70,6 +70,12 @@ nav {
   height: 75px;
   margin: 5px 5px 0 5px;
   text-align: center;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: lightgreen;
 }
 .back_button {
   display: flex;
