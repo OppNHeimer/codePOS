@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       post 'orders', to: 'orders#create'
       resources :includes, only: [:create, :destroy] do
         post 'without', to: 'orders#without'
+        delete 'remove_without', to: 'orders#remove_without'
         post 'add', to: 'orders#add'
+        delete 'remove_add', to: 'orders#remove_add'
       end
     end
   end

@@ -18,6 +18,15 @@ class OrdersController < ApplicationController
     redirect_to category_item_path(@category, @item), notice: 'Without ingredient'
   end
 
+  def remove_without
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:item_id])
+    @ingredient = Ingredient.find(params[:include_id])
+    $modifications.delete('NO ' + @ingredient.name)
+
+    redirect_to category_item_path(@category, @item)
+  end
+
   def add
     @category = Category.find(params[:category_id])
     @item = @category.items.find(params[:item_id])
@@ -25,6 +34,15 @@ class OrdersController < ApplicationController
     $modifications.push('ADD ' + @ingredient.name)
 
     redirect_to category_item_path(@category, @item), notice: 'Add ingredient'
+  end
+
+  def remove_add
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:item_id])
+    @ingredient = Ingredient.find(params[:include_id])
+    $modifications.delete('ADD ' + @ingredient.name)
+
+    redirect_to category_item_path(@category, @item)
   end
 
 

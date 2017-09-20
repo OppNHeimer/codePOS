@@ -24,7 +24,7 @@
       <!-- tests if ingredient already removed -->
       <% if $modifications.include? 'NO ' + ingredient.name %>
         <!-- selected button -->
-        <%= link_to category_item_include_without_path(@category, @item, ingredient), class: "menu_button red", method: :post do %>
+        <%= link_to category_item_include_remove_without_path(@category, @item, ingredient), class: "menu_button red", method: :delete do %>
           <%= ingredient.name %>
           <br>
           <%= ingredient.code %>
@@ -67,7 +67,7 @@
     <!-- tests if ingredient already added -->
     <% if $modifications.include? 'ADD ' + ingredient.name %>
       <!-- selected button -->
-      <%= link_to category_item_include_add_path(@category, @item, ingredient), class: "menu_button green", method: :post do %>
+      <%= link_to category_item_include_remove_add_path(@category, @item, ingredient), class: "menu_button green", method: :delete do %>
         <%= ingredient.name %>
         <br>
         <%= ingredient.code %>

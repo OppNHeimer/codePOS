@@ -34,7 +34,7 @@
             <li><%= link_to '(-)', order_path(order), method: :delete %> <%= order.item %></li>
                 <ul>
                   <% if order.modification %>
-                    <% order.modification.each do |mod| %>
+                    <% order.modification.sort.each do |mod| %>
                       <li><%= mod.to_s %></li>
                     <% end %>
                     <% end %>
