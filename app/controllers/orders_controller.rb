@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @category = Category.find(params[:category_id])
     @item = @category.items.find(params[:item_id])
     @order = Order.create!(order_params)
+    $modifications = []
 
     redirect_to category_item_path(@category, @item), notice: 'Item added to order'
   end
