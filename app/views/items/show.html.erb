@@ -28,7 +28,7 @@
       <% end %>
 
       <!-- button to delete ingredient -->
-      <%= link_to category_item_include_destroy_path(@category, @item, ingredient), class: "edit_button", method: :delete  do %>
+      <%= link_to category_item_include_path(@category, @item, ingredient), class: "edit_button", method: :delete  do %>
         remove
       <% end %>
     </div>

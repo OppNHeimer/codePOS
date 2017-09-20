@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   resources :categories, except: [:new, :show] do
     resources :items, except: [:new] do
         post 'orders', to: 'orders#create'
-      resources :includes, only: [:create, :destroy] do
-        delete 'destroy'
-      end
+      resources :includes, only: [:create, :destroy]
       resources :ingredients, only: [] do
         post 'add_modification', to: 'ingredients#add_modification'
       end

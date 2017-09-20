@@ -13,7 +13,7 @@ class IncludesController < ApplicationController
   def destroy
     @category = Category.find(params[:category_id])
     @item = Item.find(params[:item_id])
-    @include = Include.find_by(item_id: params[:item_id], ingredient_id: params[:include_id])
+    @include = Include.find_by(item_id: params[:item_id], ingredient_id: params[:id])
     @include.destroy
 
     redirect_to category_item_path(@category, @item), notice: 'Ingredient removed.'
