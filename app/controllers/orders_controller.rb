@@ -8,10 +8,25 @@ class OrdersController < ApplicationController
     redirect_to category_item_path(@category, @item), notice: 'Item added to order'
   end
 
-  def add_modification
-    $modification.push(params[:id])
+  def without
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:item_id])
+    @ingredient = Ingredient.find(params[:include_id])
+    $modifications.push('NO ' + @ingredient.name)
+
+    redirect_to category_item_path(@category, @item), notice: 'Without ingredient'
   end
-  
+
+  def add
+    @category = Category.find(params[:category_id])
+    @item = @category.items.find(params[:item_id])
+    @ingredient = Ingredient.find(params[:include_id])
+    $modifications.push('ADD ' + @ingredient.name)
+
+    redirect_to category_item_path(@category, @item), notice: 'Add ingredient'
+  end
+
+
   def destroy
     @order = Order.find(params[:id])
     @order.destroy

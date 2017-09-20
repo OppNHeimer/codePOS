@@ -21,7 +21,7 @@
   <% @item.ingredients.each do |ingredient| %>
     <div class='button_group'>
 
-      <%= link_to root_path, class: "menu_button" do %>
+      <%= link_to category_item_include_without_path(@category, @item, ingredient), class: "menu_button", method: :post do %>
         <%= ingredient.name %>
         <br>
         <%= ingredient.code %>
@@ -49,7 +49,7 @@
 <section class='buttons'>
   <% @ingredients.each do |ingredient| %>
 
-    <%= link_to root_path, class: "menu_button" do %>
+    <%= link_to category_item_include_add_path(@category, @item, ingredient), class: "menu_button", method: :post do %>
       <%= ingredient.name %>
       <br>
       <%= ingredient.code %>

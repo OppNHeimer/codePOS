@@ -30,11 +30,14 @@
       <h3>Order</h3>
         <ol>
           <% @orders.each do |order| %>
+            <!-- delete item from order -->
             <li><%= link_to '(-)', order_path(order), method: :delete %><%= order.item %></li>
                 <ul>
-                  <% order.modification.each do |mod| %>
-                    <li><%= mod.to_s %></li>
-                  <% end %>
+                  <% if order.modification %>
+                    <% order.modification.each do |mod| %>
+                      <li><%= mod.to_s %></li>
+                    <% end %>
+                    <% end %>
                   <% if order.message != "" %>
                     <li> REQUEST: <%= order.message %></li>
                   <% end %>

@@ -6,12 +6,6 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new
   end
 
-  def show
-  end
-
-  def new
-  end
-
   # add ingredient to list
   def create
     @ingredient = Ingredient.new(ingredient_params)
