@@ -15,7 +15,7 @@
 <% end %>
 
 <!-- item's includes subheading -->
-<h3><%= @item.name %> includes:</h3>
+<h3>Remove ingredient:</h3>
 <section class='buttons'>
   <!-- list of includes -->
   <% @item.ingredients.each do |ingredient| %>
@@ -23,7 +23,10 @@
 
       <%= link_to root_path, class: "menu_button" do %>
         <%= ingredient.name %>
+        <br>
+        <%= ingredient.code %>
       <% end %>
+
       <!-- button to delete ingredient -->
       <%= link_to category_item_include_destroy_path(@category, @item, ingredient), class: "edit_button", method: :delete  do %>
         remove
@@ -35,9 +38,21 @@
 <section class='form'>
   <!-- form to add include from list of ingredients -->
   <%= form_for [@category, @item, @include] do |f| %>
-    <li><%= f.label 'add ingredient' %>
+    <li><%= f.label 'add default ingredient' %>
     <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
 
     <%= f.submit "add" %></li>
+  <% end %>
+</section>
+
+<h3>Add ingredient:</h3>
+<section class='buttons'>
+  <% @ingredients.each do |ingredient| %>
+
+    <%= link_to root_path, class: "menu_button" do %>
+      <%= ingredient.name %>
+      <br>
+      <%= ingredient.code %>
+    <% end %>
   <% end %>
 </section>

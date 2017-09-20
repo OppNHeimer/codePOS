@@ -16,10 +16,26 @@
 
 body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
   width: auto;
 }
+  .left {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 100vh;
+    padding: 0 50px;
+    /*margin: 0 20px;*/
+    right: 0px;
+    background-color: darkgrey;
+
+  }
 
 nav {
   display: flex;
@@ -95,9 +111,4 @@ h1 {
   display: flex;
   margin: 0 5px;
   font-size: 30px;
-}
-
-.order {
-  position: absolute;
-  bottom: 0px;
 }

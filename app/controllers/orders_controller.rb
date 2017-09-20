@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     redirect_to category_item_path(@category, @item), notice: 'Item added to order'
   end
 
+  def add_modification
+    $modification.push(params[:id])
+  end
+  
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
@@ -17,6 +21,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:message).merge(item: @item.name, modification: @modifications)
+    params.require(:order).permit(:message).merge(item: @item.name, modification: $modifications)
   end
 end
