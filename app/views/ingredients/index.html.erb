@@ -1,17 +1,16 @@
 <!-- ingredients heading -->
-<h1>Ingredients</h1>
+<section class='heading_section'>
+  <h1>Ingredients</h1>
+</section>
 
 <section class='buttons'>
 <!-- list of all ingredients available to the menu -->
   <% @ingredients.each do |ingredient| %>
     <!-- button to edit ingredient -->
     <%= link_to edit_ingredient_path(ingredient), class: 'menu_button' do %>
-      EDIT
-      <br>
-      <br>
+      <p class='edit'>EDIT</p>
       <%= ingredient.name %>
-      <br>
-      <%= ingredient.code %>
+      <p class='code'><%= ingredient.code %></p>
     <% end %>
   <% end %>
 </section>

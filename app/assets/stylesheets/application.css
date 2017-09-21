@@ -13,12 +13,22 @@
  *= require_tree .
  *= require_self
  */
+/*@font-face {
+   font-family: "chalkHead";
+   src: font-url("Firestarter Z.otf");
+   src: font-url("FirestarterZ.ttf");
+}*/
 
+
+html {
+  height: 100vh;
+}
 body {
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  width: auto;
+  position: fixed;
+  background: url("/assets/cropped_tile.jpg");
+  background-size: 30%;
 }
   .left {
     display: flex;
@@ -28,33 +38,50 @@ body {
   .right {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    height: 100vh;
-    padding: 0 50px 0 20px;
-    /*margin: 0 20px;*/
+    background-image: url("/assets/yellowpad.jpg");
+    background-size: auto 90vh;
+    background-repeat: no-repeat;
+    position: fixed;
+    box-shadow: 0 0 15px 1px;
+    height: 80vh;
+    width: 25vw;
+    padding: 80px 50px 0 56px;
+    margin-top: 30px;
     right: 0px;
-    background-color: darkgrey;
-
   }
-
+  .order_list {
+    font-size: 19px;
+    font-family: Courier;
+    margin: 0;
+  }
+  .order_head {
+    margin: 0;
+    font-family: Courier;
+  }
 nav {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 15vh;
+  width: 60vw;
+  justify-content: flex-end;
 }
 #yield {
    display: flex;
    flex-direction: column
 }
 
+
 .heading_section {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  margin: 10px;
 }
 .buttons {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
 }
 .button_group {
   display: flex;
@@ -65,11 +92,13 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  width: 100px;
-  height: 75px;
-  margin: 5px 5px 0 5px;
+  /*border: 1px solid black;*/
+  width: 125px;
+  height: 100px;
+  margin: 10px;
   text-align: center;
+  color: rgba(255, 255, 255, .8);
+  font-size: 24px;
 }
 .red {
   background-color: red;
@@ -99,11 +128,17 @@ nav {
 .nav_button {
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  width: 100px;
+  align-items: flex-start;
+  margin: 30px 10px 0 10px;
+  padding-top: 10px;
+  width: 150px;
   height: 50px;
-  background-color: yellow;
+  background-color: rgba(255, 255, 255, .7);
+  border: 3px dashed white;
+  border-radius: 20px;
+  font-family: verdana;
+  font-weight: bold;
+  color: darkgreen;
 }
 a {
   text-decoration: none;
@@ -117,4 +152,29 @@ h1 {
   display: flex;
   margin: 0 5px;
   font-size: 30px;
+}
+
+.yield {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-image: url("/assets/chalkboard.jpg");
+  background-position: top right;
+  box-shadow: 0 10px 15px 3px;
+  height: 85vh;
+  width: 60vw;
+  padding: 50px 20px 0 20px;
+  margin: 0 0 -10px 0;
+}
+
+.edit {
+  font-size: 15px;
+  margin: 5px 0 0 0;
+}
+.code {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 5 0;
 }
