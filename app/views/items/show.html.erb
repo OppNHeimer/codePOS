@@ -4,18 +4,30 @@
   <%= link_to '<=', category_items_path(@category), class: 'back_button' %>
   <!-- item heading -->
   <h1><%= @item.name %></div></h1>
+
+  <!-- form to add item to order -->
+  <div class='add_order'>
+    <%= form_for [@category, @item, @order] do |f| %>
+      <%= f.label 'special request' %>
+      <%= f.text_field :message %>
+
+      <%= f.submit 'add to order', class: 'submit_button' %>
+    <% end %>
+  </div>
 </section>
-
-<!-- form to add item to order -->
-<%= form_for [@category, @item, @order] do |f| %>
-  <%= f.label 'special request' %>
-  <%= f.text_field :message %>
-
-  <%= f.submit 'add to order' %>
-<% end %>
 
 <!-- item's includes subheading -->
 <h3>Remove ingredient:</h3>
+<section class='form'>
+  <!-- form to add include from list of ingredients -->
+  <%= form_for [@category, @item, @include] do |f| %>
+    <li><%= f.label 'add default ingredient' %>
+    <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+
+    <%= f.submit "add" %></li>
+  <% end %>
+</section>
+
 <section class='buttons'>
   <!-- list of includes -->
   <% @item.ingredients.each do |ingredient| %>
@@ -25,16 +37,14 @@
       <% if $modifications.include? 'NO ' + ingredient.name %>
         <!-- selected button -->
         <%= link_to category_item_include_remove_without_path(@category, @item, ingredient), class: "menu_button red", method: :delete do %>
-          <%= ingredient.name %>
-          <br>
-          <%= ingredient.code %>
+          <p class='name'><%= ingredient.name %></p>
+          <p class='code'><%= ingredient.code %></p>
         <% end %>
       <% else %>
         <!-- unselected button -->
         <%= link_to category_item_include_without_path(@category, @item, ingredient), class: "menu_button", method: :post do %>
-          <%= ingredient.name %>
-          <br>
-          <%= ingredient.code %>
+          <p class='name'><%= ingredient.name %></p>
+          <p class='code'><%= ingredient.code %></p>
         <% end %>
       <% end %>
 
@@ -50,16 +60,6 @@
   <% end %>
 </section>
 
-<section class='form'>
-  <!-- form to add include from list of ingredients -->
-  <%= form_for [@category, @item, @include] do |f| %>
-    <li><%= f.label 'add default ingredient' %>
-    <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
-
-    <%= f.submit "add" %></li>
-  <% end %>
-</section>
-
 <h3>Add ingredient:</h3>
 <section class='buttons'>
   <% @ingredients.each do |ingredient| %>
@@ -68,16 +68,14 @@
     <% if $modifications.include? 'ADD ' + ingredient.name %>
       <!-- selected button -->
       <%= link_to category_item_include_remove_add_path(@category, @item, ingredient), class: "menu_button green", method: :delete do %>
-        <%= ingredient.name %>
-        <br>
-        <%= ingredient.code %>
+        <p class='name'><%= ingredient.name %></p>
+        <p class='code'><%= ingredient.code %></p>
       <% end %>
     <% else %>
       <!-- unselected button -->
       <%= link_to category_item_include_add_path(@category, @item, ingredient), class: "menu_button", method: :post do %>
-        <%= ingredient.name %>
-        <br>
-        <%= ingredient.code %>
+        <p class='name'><%= ingredient.name %></p>
+        <p class='code'><%= ingredient.code %></p>
       <% end %>
     <% end %>
   <% end %>

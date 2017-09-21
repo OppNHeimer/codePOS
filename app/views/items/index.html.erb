@@ -6,22 +6,6 @@
   <h1><%= @category.name %></div></h1>
 </section>
 
-<section class='buttons'>
-<!-- all submenu items -->
-  <% @items.each do |item| %>
-    <div class='button_group'>
-      <!-- link to item show pages -->
-      <%= link_to category_item_path(@category, item), class: 'menu_button' do %>
-        <%= item.name %>
-        <%= item.code %>
-      <% end %>
-
-      <!-- link to edit item -->
-      <%= link_to 'edit', edit_category_item_path(@category, item), class: 'edit_button' %>
-    </div>
-  <% end %>
-</section>
-
 <section class='form'>
   <h4>New menu item:</h4>
   <!-- display error if form is not filled correctly -->
@@ -38,5 +22,21 @@
     <%= f.text_field :code %>
 
     <%= f.submit "Create" %>
+  <% end %>
+</section>
+
+<section class='buttons'>
+<!-- all submenu items -->
+  <% @items.each do |item| %>
+    <div class='button_group'>
+      <!-- link to item show pages -->
+      <%= link_to category_item_path(@category, item), class: 'menu_button' do %>
+        <p class='name'><%= item.name %></p>
+        <p class='code'><%= item.code %></p>
+      <% end %>
+
+      <!-- link to edit item -->
+      <%= link_to 'edit', edit_category_item_path(@category, item), class: 'edit_button' %>
+    </div>
   <% end %>
 </section>

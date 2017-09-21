@@ -2,6 +2,22 @@
   <h1>Menu</h1>
 </section>
 
+<section class='form'>
+  <h4>New category:</h4>
+  <!-- error if form filled out incorrectly -->
+  <% @category.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+  <% end %>
+
+  <!-- form to create new category -->
+  <%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Create" %>
+  <% end %>
+</section>
+
 <section class='buttons'>
 <!-- list of all menu categories -->
   <% @categories.each do |category| %>
@@ -21,21 +37,5 @@
         </div>
       </a>
     </div>
-  <% end %>
-</section>
-
-<section class='new'>
-  <h4>New category:</h4>
-  <!-- error if form filled out incorrectly -->
-  <% @category.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
-
-  <!-- form to create new category -->
-  <%= form_for @category do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.submit "Create" %>
   <% end %>
 </section>
