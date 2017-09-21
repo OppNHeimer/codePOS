@@ -28,7 +28,7 @@
   <% end %>
 </section>
 
-<section class='buttons'>
+<section class='buttons remove_ingredients'>
   <!-- list of includes -->
   <% @item.ingredients.each do |ingredient| %>
     <div class='button_group'>
@@ -61,7 +61,7 @@
 </section>
 
 <h3>Add ingredient:</h3>
-<section class='buttons ingredients'>
+<section class='buttons add_ingredients'>
   <% @ingredients.each do |ingredient| %>
 
     <!-- tests if ingredient already added -->

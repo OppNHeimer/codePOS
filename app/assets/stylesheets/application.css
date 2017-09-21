@@ -136,7 +136,12 @@ nav {
   margin: 0 5px 5px 5px;
   color: black;
 }
-.ingredients {
+.remove_ingredients {
+  height: 18vh;
+  overflow-y: scroll;
+}
+
+.add_ingredients {
   height: 30vh;
   overflow-y: scroll;
 }
