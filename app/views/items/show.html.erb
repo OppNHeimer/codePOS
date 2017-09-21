@@ -22,7 +22,7 @@
   <!-- form to add include from list of ingredients -->
   <%= form_for [@category, @item, @include] do |f| %>
     <li><%= f.label 'add default ingredient' %>
-    <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+    <%= f.collection_select(:ingredient_id, @ingredients, :id, :name) %>
 
     <%= f.submit "add" %></li>
   <% end %>
