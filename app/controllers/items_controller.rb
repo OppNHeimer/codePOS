@@ -10,9 +10,9 @@ class ItemsController < ApplicationController
   def show
     @category = Category.find(params[:category_id])
     @item = @category.items.find(params[:id])
-    @includes = @item.ingredients.all
-    @ingredients = Ingredient.all
-    
+    @includes = @item.ingredients.all.sort_by{ |k| k["name"] }
+    @ingredients = Ingredient.all.sort_by{ |k| k["name"] }
+
 
     # used for includes#create
     @include = @item.includes.new
