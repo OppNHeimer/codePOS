@@ -6,6 +6,4 @@ class ApplicationController < ActionController::Base
   def get_orders
     @orders = Order.all
   end
-
-
 end
