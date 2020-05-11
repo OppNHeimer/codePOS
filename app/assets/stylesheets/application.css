@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
 /*@font-face {
    font-family: "chalkHead";
    src: font-url("Firestarter Z.otf");
@@ -20,9 +22,12 @@
 }*/
 
 
+/* AS - fixed formatting here -- make sure that indentation is good here! */
+
 html {
   height: 100vh;
 }
+
 body {
   display: flex;
   flex-direction: row;
@@ -30,34 +35,39 @@ body {
   background: url("/assets/cropped_tile.jpg");
   background-size: 30%;
 }
-  .left {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  .right {
-    display: flex;
-    flex-direction: column;
-    background-image: url("/assets/yellowpad.jpg");
-    background-size: auto 90vh;
-    background-repeat: no-repeat;
-    position: fixed;
-    box-shadow: 0 5px 15px 0px;
-    height: 80vh;
-    width: 25vw;
-    padding: 70px 50px 0 56px;
-    margin-top: 30px;
-    right: 0px;
-  }
-  .order_list {
-    font-size: 19px;
-    font-family: Courier;
-    margin: 0;
-  }
-  .order_head {
-    margin: 0;
-    font-family: Courier;
-  }
+
+.left {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/assets/yellowpad.jpg");
+  background-size: auto 90vh;
+  background-repeat: no-repeat;
+  position: fixed;
+  box-shadow: 0 5px 15px 0px;
+  height: 80vh;
+  width: 25vw;
+  padding: 70px 50px 0 56px;
+  margin-top: 30px;
+  right: 0px;
+}
+
+.order_list {
+  font-size: 19px;
+  font-family: Courier;
+  margin: 0;
+}
+
+.order_head {
+  margin: 0;
+  font-family: Courier;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -65,11 +75,11 @@ nav {
   width: 60vw;
   justify-content: flex-end;
 }
-#yield {
-   display: flex;
-   flex-direction: column
-}
 
+#yield {
+  display: flex;
+  flex-direction: column
+}
 
 .heading_section {
   display: flex;
@@ -78,18 +88,21 @@ nav {
   margin: 10px 20px;
   color: rgba(255, 255, 255, .8);
 }
+
 .buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
 }
+
 .button_group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .menu_button {
   display: flex;
   flex-direction: column;
@@ -106,12 +119,15 @@ nav {
   color: rgba(255, 255, 255, .8);
   font-size: 24px;
 }
+
 .red {
   background-color: rgba(178, 34, 34, .5);
 }
+
 .green {
   background-color: rgba(152, 251, 152, .4);
 }
+
 .back_button {
   display: flex;
   justify-content: center;
@@ -124,6 +140,7 @@ nav {
   margin: 0 15px 0 0;
   color: rgba(255, 255, 255, .8);
 }
+
 .edit_button {
   display: flex;
   justify-content: center;
@@ -136,6 +153,7 @@ nav {
   margin: 0 5px 5px 5px;
   color: black;
 }
+
 .remove_ingredients {
   height: 18vh;
   overflow-y: scroll;
@@ -166,6 +184,7 @@ nav {
   font-weight: bold;
   color: black;
 }
+
 .main_head {
   position: fixed;
   left: 10px;
@@ -177,6 +196,7 @@ nav {
   padding: 50px 5px 5px 5px;
   font-size: 20px;
 }
+
 a {
   text-decoration: none;
 }
@@ -214,12 +234,14 @@ h1 {
   font-size: 15px;
   margin: 5px 0 0 0;
 }
+
 .code {
   font-size: 15px;
   font-weight: bold;
   padding: 10px 0;
   margin: 0;
 }
+
 .name {
   padding: 15px 5px 0 5px;
   margin: 0;
@@ -229,6 +251,7 @@ h3 {
   color: white;
   margin: 10px 5px 0 5px;
 }
+
 .add_order {
   display: flex;
   flex-direction: row;
@@ -254,8 +277,8 @@ h3 {
   font-size: 20px;
   z-index: 1;
 }
-.submit_button {
 
+.submit_button {
   height: 40px;
   background-color: rgba(255, 255, 255, .3);
   border: 2px solid white;
